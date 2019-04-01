@@ -1,0 +1,9 @@
+"---- フォント
+set guifont=Ricty_Diminished_Discord:h15
+
+"---- 見た目系
+syntax enable
+set t_Co=256 " ターミナルを256色に対応
+set background=light
+colorscheme solarized
+"let g:solarized_termcolors=256
