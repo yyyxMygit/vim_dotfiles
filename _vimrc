@@ -1,3 +1,4 @@
+scriptencoding utf-8
 set shellslash " Windows でもパスの区切り文字を / にする
 
 "dein Scripts-----------------------------
@@ -9,12 +10,12 @@ endif
 let s:dein_dir = expand('~/.cache/dein')
 "---- dein自体の自動インストール
 let s:dein_repo_dir = s:dein_dir.'/repos/github.com/Shougo/dein.vim'
-if !isdirectory(s:dein_repo_dir)
-  call system('git clone https://github.com/Shougo/dein.vim' . shellescape(s:dein_repo_dir))
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+ endif
+ execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
-
-"---- dein.vimのクローン先を指定
-set runtimepath+=D:/Git-Projects/.cache/dein/repos/github.com/Shougo/dein.vim
 
 "---- 設定開始
 if dein#load_state(s:dein_dir)
@@ -59,6 +60,9 @@ set t_Co=256 " ターミナルを256色に対応
 "colorscheme solarized
 "let g:solarized_termcolors=256
 
+" どの文字でタブや改行を表示するかを設定
+set listchars=tab:>-,extends:<,trail:-,eol:<
+
 "--------------------------------------
 " ファイル編集
 "--------------------------------------
@@ -66,6 +70,17 @@ set autoread " 編集中のファイルが変更されたら自動で読み直�
 set hidden   " バッファが編集中でもその他のファイルを開けるように
 " 編集中にファイルタイプが変更されたとき、適したプラグインとインデントに変更する
 filetype plugin indent on
+
+" テキスト挿入中の自動折り返しを日本語に対応させる
+set formatoptions+=mM
+" バックスペースでインデントや改行を削除できるようにする
+set backspace=indent,eol,start
+" 常にステータス行を表示 (詳細は:he laststatus)
+set laststatus=2
+" タイトルを表示
+set title
+" コマンドラインの高さ (Windows用gvim使用時はgvimrcを編集すること)
+set cmdheight=2
 
 "--------------------------------------
 " ファイルの自動生成
@@ -81,7 +96,7 @@ set ruler      " 現在のカーソル位置(行、桁)を Vim ウィンドウ�
 set number     " 行番号を表示
 "set list       " 不可視文字を表示する
 "set cursorline " カーソルラインをハイライト
-set nowrap     " 画面の端で文字列を折り返し
+set wrap     " 画面の端で文字列を折り返し
 set whichwrap=b,s,h,l,<,>,[,],~ " カーソルの左右移動で行末から次の行の行頭への移動
 set scrolloff=5 " スクロールするとき、下が見える
 
