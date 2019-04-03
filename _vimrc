@@ -13,8 +13,8 @@ let s:dein_repo_dir = s:dein_dir.'/repos/github.com/Shougo/dein.vim'
 if &runtimepath !~# '/dein.vim'
   if !isdirectory(s:dein_repo_dir)
     execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
- endif
- execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
 "---- 設定開始
@@ -60,8 +60,6 @@ set t_Co=256 " ターミナルを256色に対応
 "colorscheme solarized
 "let g:solarized_termcolors=256
 
-" どの文字でタブや改行を表示するかを設定
-set listchars=tab:>-,extends:<,trail:-,eol:<
 
 "--------------------------------------
 " ファイル編集
@@ -94,7 +92,9 @@ set noundofile " アンドゥファイルを作らない
 "--------------------------------------
 set ruler      " 現在のカーソル位置(行、桁)を Vim ウィンドウの右下に常に表示
 set number     " 行番号を表示
-"set list       " 不可視文字を表示する
+set list       " 不可視文字を表示する
+" どの文字でタブや改行を表示するかを設定
+set listchars=tab:>-,extends:<,trail:-,eol:<
 "set cursorline " カーソルラインをハイライト
 set wrap     " 画面の端で文字列を折り返し
 set whichwrap=b,s,h,l,<,>,[,],~ " カーソルの左右移動で行末から次の行の行頭への移動
