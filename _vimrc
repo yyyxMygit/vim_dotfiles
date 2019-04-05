@@ -31,6 +31,14 @@ if dein#check_install()
 endif
 "End dein Scripts-------------------------
 
+"-----------------------------------------
+" ステータスラインをカスタマイズするプラグイン
+" 'itchyny/lightline.vim'の設定
+" solarlizedに適した配色にする
+let g:lightline = {
+  \'colorscheme': 'solarized',
+  \}
+"-----------------------------------------
 
 " ================基本設定================
 
@@ -94,7 +102,7 @@ set ruler      " 現在のカーソル位置(行、桁)を Vim ウィンドウ�
 set number     " 行番号を表示
 set list       " 不可視文字を表示する
 " どの文字でタブや改行を表示するかを設定
-set listchars=tab:>-,extends:<,trail:-,eol:<
+set listchars=tab:>-,extends:<,trail:-,eol:/
 "set cursorline " カーソルラインをハイライト
 set wrap     " 画面の端で文字列を折り返し
 set whichwrap=b,s,h,l,<,>,[,],~ " カーソルの左右移動で行末から次の行の行頭への移動
