@@ -1,3 +1,7 @@
+#[[plugins]]
+#repo = 'tpope/vim-endwise'
+#on_ft = 'ruby'
+
 [[plugins]]
-repo = 'tpope/vim-endwise'
-on_ft = 'ruby'
+repo = 'cohama/lexima.vim'
+on_i = 1
